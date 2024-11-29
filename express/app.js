@@ -5,8 +5,8 @@ const fs = require('fs');
 
 
 const app = express(); //express로 서버 생성.
-const PORT = process.env.PORT || 3000; //포트번호 설정
-//app.set('PORT', process.env.PORT || 3000); 포트 설정은 이렇게도 가능
+const PORT = process.env.PORT || 3000; //포트번호 설정. 이게 포트를 설정한 것은 아님. 그냥 포트 정보를 .env 변수에 저장해 놓은 것.
+//app.set('PORT', process.env.PORT || 3000); 포트 설정은 이렇게도 가능, 이 방식은 이 서버 자체의 포트를 설정하는 것.
 
 
 //미들웨어는 모든 요청에 대해 실행되는 코드. 즉 보통 모든 라우터에 대해 공통적으로 수행돼야 하는 작업이 미들웨어로 수행됨.
