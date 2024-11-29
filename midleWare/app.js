@@ -45,7 +45,7 @@ app.use(express.static(path.join(__dirname,'public','imgs'))); //static은 이�
 //     res.send('<h1>Hello World</h1>'); //send, sendFile 메서드에 writeHead과 같은 기능이 내포돼있음. 따라서 writeHead를 함께 사용하는건 불가능함.(응답을 2번하는 꼴)
 // });
 
-app.use((err,req,res,next)=>{ //에러 처리 미들웨어, 4개의 파라미터를 반드시 전부 사용해 줘야함.
+app.use((err,req,res,next)=>{ //에러 처리 미들웨어, 4개의 파라미터를 반드시 다 적어줘야 함
     res.status(err.status || 500).send(err.message); //에러 발생.
 })
 
