@@ -5,11 +5,9 @@ readStream.on('data',(chunk)=>{ //on -> js의 이벤트 리스너라 생각하�
     data.push(chunk);
     console.log('data : ',chunk.toString(), chunk.length);
 })
-
 readStream.on('end',()=>{
     console.log('data : ',Buffer.concat(data).toString());//concat은 배열에 다른 배열을 추가하는 메서드.
 })
-
 readStream.on('error',(err)=>{
     console.log('error : ',err);
 })

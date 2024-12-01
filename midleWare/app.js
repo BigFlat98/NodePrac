@@ -17,12 +17,12 @@ app.set('PORT', process.env.PORT || 3000); //.env에 PORT라는 키값이 있으
 
 
 //원래 미들웨어는 next()가 없으면 다음 미들웨어로 넘어가지 않고 하나 실행 후 거기서 멈춤, 라우터로 가지도 못함.
-app.use((req,res,next)=>{//원래 미들웨어의 파라미터는 next포함 3개
-    console.log('my midleware');
-    const error = new Error('에러 발생'); //에러 객체 생성
-    error.status = 503; //에러 상태 코드 지정
-    next(error); //next()를 사용하면 다음 미들웨어로 넘어감.  
-});
+// app.use((req,res,next)=>{//원래 미들웨어의 파라미터는 next포함 3개
+//     console.log('my midleware');
+//     const error = new Error('에러 발생'); //에러 객체 생성
+//     error.status = 503; //에러 상태 코드 지정
+//     next(error); //next()를 사용하면 다음 미들웨어로 넘어감.  
+// });
 
 app.use(morgan('dev')); //보통 모듈로 가져다 쓰는 미들웨어는 next()가 포함돼있음. 때문에 써줄 필요가 없음. 하지만 일부는 포함돼있지 않을 수 있기 때문에 그런 상황에서는 직접 사용해 줘야함.
 app.use(cookieParser(cookieSecret));
@@ -45,9 +45,9 @@ app.use(express.static(path.join(__dirname,'public','imgs'))); //static은 이�
 //     res.send('<h1>Hello World</h1>'); //send, sendFile 메서드에 writeHead과 같은 기능이 내포돼있음. 따라서 writeHead를 함께 사용하는건 불가능함.(응답을 2번하는 꼴)
 // });
 
-app.use((err,req,res,next)=>{ //에러 처리 미들웨어, 4개의 파라미터를 반드시 다 적어줘야 함
-    res.status(err.status || 500).send(err.message); //에러 발생.
-})
+// app.use((err,req,res,next)=>{ //에러 처리 미들웨어, 4개의 파라미터를 반드시 다 적어줘야 함
+//     res.status(err.status || 500).send(err.message); //에러 발생.
+// })
 
 app.get('/',(req,res)=>{
     res.cookie('myCookieKey','myCookieValue',{maxAge:60000,httpOnly:true,path:'/',signed:true}); 
