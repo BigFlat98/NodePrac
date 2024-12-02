@@ -16,7 +16,7 @@ app.set('PORT', process.env.PORT || 3000); //.env에 PORT라는 키값이 있으
 
 
 app.use(morgan('dev')); //보통 모듈로 가져다 쓰는 미들웨어는 next()가 포함돼있음. 때문에 써줄 필요가 없음. 하지만 일부는 포함돼있지 않을 수 있기 때문에 그런 상황에서는 직접 사용해 줘야함.
-
+app.use(express.static(path.join(__dirname,'public','imgs')));
 
 
 //라우터로 가는 코드

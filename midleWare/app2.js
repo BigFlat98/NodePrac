@@ -127,8 +127,6 @@ app.use(express.urlencoded({extended:true})); //입력받은 form 데이터를 �
     
 // });
 
-
-
 // app.get('/session',(req,res,next)=>{
 //     res.send('다른 라우터 동작')
 // });
