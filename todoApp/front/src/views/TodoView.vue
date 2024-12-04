@@ -6,7 +6,7 @@
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item" :class="{active: index === 0}" v-for="(image,index) in images" :key="index">
-                    <img :src="image" class="d-block w-100" alt="...">
+                    <img :src="`http://localhost:3000${image}`" class="d-block w-100 img-size" alt="이미지">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -115,7 +115,7 @@ export default{
             this.todos = response.data;
         },
         async addTodo(){
-            const response = await axios.post('http://localhost:3000/',{title:this.newTodoText});
+            const response = await axios.post('http://localhost:3000/',{title:this.newTodoText});//req.body에 title 속성을 갖는 obj전달
             this.todos = response.data;
             console.log('addTodo complete');
             console.log(response);
@@ -158,11 +158,9 @@ export default{
 
         },
         async getImages(){
-            console.log('getImages');
             const response = await axios.get('http://localhost:3000/image');
-            console.log(response);
             this.images = response.data;
-            console.log("getImages complete"+this.images);
+            console.log("getImages complete : "+this.images);
         }
 
     },
@@ -170,3 +168,10 @@ export default{
     watch:{}
 }
 </script>
+
+<style scoped>
+.img-size{
+    width: 200px;
+    height: 200px;
+}
+</style>

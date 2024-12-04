@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
     filename:(req,file,cb)=>{
         cb(null,`${Date.now()} - ${file.originalname}`);
     }
-})
+});
 const upload = multer({storage:storage});
 
 
@@ -22,14 +22,14 @@ router.post('/upload',upload.single('image'),(req,res)=>{
 router.get('/',(req,res)=>{
     const dirPath = path.join(__dirname,'../uploads');
     fs.readdir(dirPath,(err,files)=>{//경로에 있는 파일 전체 읽어오기
-        console.log(files);
+        console.log('files : '+files);
         if(err){
             return res.status(500).json({error:'file not found'});
         }
-        const imageUrls = files.map(file=>`/Users/daejunehwang/dj_vscode/Node/todoApp/back/uploads/${file}`);//각 파일 경로를 배열에 저장.
-        res.json({imageUrls});
-    })
-})
+        const imageUrls = files.map(file=>`/uploads/${file}`);//각 파일 경로를 배열에 저장.
+        res.json(imageUrls);
+    });
+});
 
 
 module.exports = router;
