@@ -7,7 +7,7 @@ router.route('/')//.route()쓰면 특정 라우터에 대한 각 요청들을 �
 .get(async (req,res,next)=>{
     try{
         const users = await User.findAll();
-        res.send(users);//json으로 바꿀 것
+        res.json(users);//json으로 바꿀 것
     }
     catch(err){
         console.error(err);
@@ -21,7 +21,7 @@ router.route('/')//.route()쓰면 특정 라우터에 대한 각 요청들을 �
             age:req.body.age,
             married:req.body.married,
             comment:req.body.comment,
-        })
+        });
         console.log(user);
         res.end();
     }
