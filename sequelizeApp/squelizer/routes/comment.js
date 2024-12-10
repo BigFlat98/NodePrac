@@ -8,7 +8,7 @@ router.route('/')
     try{
         const comments = await Comment.findAll(
             {
-                include:{
+                include:{ //join, users 테이블에 있는 name을 외래키로 참조
                     model:User,
                     attributes:['name'],
                 }

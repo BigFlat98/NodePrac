@@ -21,16 +21,16 @@ sequelize.sync({ force: false })
     })
 
 
-//middleware
-app.use(express.static(path.join(__dirname,'public')));
-app.use(express.json());
-app.use(express.urlencoded({extended:false}));
-const corsOptions = {
-    origin: 'http://localhost:8080', // Vue.js 개발 서버의 기본 포트
-    credentials: true, // 필요한 경우 쿠키/인증 헤더 허용
-    optionsSuccessStatus: 200
-  };
-app.use(cors(corsOptions));
+    //middleware
+    app.use(express.static(path.join(__dirname,'public')));
+    app.use(express.json());
+    app.use(express.urlencoded({extended:false}));
+    const corsOptions = {
+        origin: 'http://localhost:8080', // Vue.js 개발 서버의 기본 포트
+        credentials: true, // 필요한 경우 쿠키/인증 헤더 허용
+        optionsSuccessStatus: 200
+    };
+    app.use(cors(corsOptions));
 
 
 //라우터 설정
